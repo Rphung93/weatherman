@@ -15,3 +15,28 @@ function renderCities() {
         $("#cityList").prepend(link);
     }
 }
+function initCityList() {
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+
+    if (storedCities !== null) {
+        cityList = storedCities;
+    }
+
+    renderCities();
+}
+
+
+function initWeather() {
+    var storedWeather = JSON.parse(localStorage.getItem("currentCity"));
+
+    if (storedWeather !== null) {
+        currentCity = storedWeather;
+        displayWeather();
+        displayFiveDayForecast();
+    }
+}
+
+
+function storeCityArray() {
+    localStorage.setItem("cities", JSON.stringify(cityList));
+}
